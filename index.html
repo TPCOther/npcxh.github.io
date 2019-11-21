@@ -7,12 +7,10 @@
   
   <title>Npcxh&#39;s Coding Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="努力学习中~">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Npcxh&#39;s Coding Blog">
 <meta property="og:url" content="https:&#x2F;&#x2F;tpcother.github.io&#x2F;npcxh.github.io&#x2F;index.html">
 <meta property="og:site_name" content="Npcxh&#39;s Coding Blog">
-<meta property="og:description" content="努力学习中~">
 <meta property="og:locale" content="zh">
 <meta name="twitter:card" content="summary">
   
@@ -112,15 +110,15 @@
 <p><strong>大意：</strong><br>有N个在X轴上方坐标已知的岛屿，然后有半径为d的雷达，只能放置在x轴上，问最少需要放置几个雷达才能覆盖所有的岛屿。如果无法覆盖输出-1。(Uva原题好像是这样的，不过听说POJ会输出在x轴下方的点?)</p>
 <p><strong>思路:</strong><br>可以通过勾股定理算出点到圆心的距离在x轴上的投影，然后可以算出最左端和最右端的能覆盖该岛屿的雷达，确定每个岛屿能被覆盖的雷达放置区间(雷达被放在这个区间内可以覆盖该岛屿)。<br>之后对左端点进行排序，当前一个区间的末尾不能覆盖后一个区间的前端时，说明得多放一个雷达。<br>值得注意的是这里有个坑，当大区间包含一个小区间的时候，雷达放置在大区间的末尾可能覆盖不了小区间的末尾，产生错误解，所以要注意加个检测，当发现更左边的末端时，更新末端为它。</p>
 <p><strong>代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct point&#123;</span><br><span class="line">    double x, y, s, e;</span><br><span class="line">&#125;;</span><br><span class="line">bool cmp(point a,point b)&#123;</span><br><span class="line">    if(a.s==b.s)&#123;</span><br><span class="line">        return a.e &lt; b.e;</span><br><span class="line">    &#125;</span><br><span class="line">    else return a.s &lt; b.s;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int c=1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        int n, i, ans = 0, f = 0;</span><br><span class="line">        double r;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; r;</span><br><span class="line">        if (r == 0 &amp;&amp; n == 0)</span><br><span class="line">        &#123;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    point a[n];</span><br><span class="line">    for (i = 0; i &lt; n;i++)&#123;</span><br><span class="line">        scanf(&quot;%lf%lf&quot;, &amp;a[i].x,&amp;a[i].y);</span><br><span class="line">        if(a[i].y&gt;r||a[i].y&lt;0)&#123;</span><br><span class="line">            f = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        a[i].s = a[i].x - sqrt(r * r - a[i].y * a[i].y);</span><br><span class="line">        a[i].e = a[i].x + sqrt(r * r - a[i].y * a[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    if(f)&#123;</span><br><span class="line">        cout &lt;&lt; &quot;Case &quot; &lt;&lt; c &lt;&lt; &quot;: &quot; &lt;&lt; -1 &lt;&lt; endl;</span><br><span class="line">        c++;</span><br><span class="line">        continue;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a, a + n, cmp);</span><br><span class="line">    i = 0;</span><br><span class="line">    while(i&lt;n)&#123;</span><br><span class="line">        double s = a[i].e;</span><br><span class="line">        while (a[i].s&lt;=s&amp;&amp;i&lt;n)&#123;</span><br><span class="line">            if(a[i].e&lt;s)&#123;</span><br><span class="line">                s = a[i].e;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        ans++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;Case &quot; &lt;&lt; c &lt;&lt; &quot;: &quot; &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    c++;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y, s, e;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">point</span> a,<span class="built_in">point</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.s==b.s)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.e &lt; b.e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> a.s &lt; b.s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> n, i, ans = <span class="number">0</span>, f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> r;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; r;</span><br><span class="line">        <span class="keyword">if</span> (r == <span class="number">0</span> &amp;&amp; n == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">point</span> a[n];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;a[i].x,&amp;a[i].y);</span><br><span class="line">        <span class="keyword">if</span>(a[i].y&gt;r||a[i].y&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            f = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        a[i].s = a[i].x - <span class="built_in">sqrt</span>(r * r - a[i].y * a[i].y);</span><br><span class="line">        a[i].e = a[i].x + <span class="built_in">sqrt</span>(r * r - a[i].y * a[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Case "</span> &lt;&lt; c &lt;&lt; <span class="string">": "</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        c++;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a, a + n, cmp);</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;n)&#123;</span><br><span class="line">        <span class="keyword">double</span> s = a[i].e;</span><br><span class="line">        <span class="keyword">while</span> (a[i].s&lt;=s&amp;&amp;i&lt;n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i].e&lt;s)&#123;</span><br><span class="line">                s = a[i].e;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        ans++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Case "</span> &lt;&lt; c &lt;&lt; <span class="string">": "</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    c++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/21/Installation/" data-id="ck38pb6ys0002147kbm0sbq8p" class="article-share-link">Share</a>
+      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/21/Installation/" data-id="ck38szb3z00014k7ka51qfcdv" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83-C/" rel="tag">贪心,C++</a></li></ul>
 
     </footer>
   </div>
@@ -151,61 +149,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>2019-11-21，基于hexo+GitHub个人博客诞生啦！
-估计以后会拿来写写题解啥的吧 记录一下刷题生活~</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/21/blog/" data-id="ck38pb6ya0000147kdayw2x5l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/npcxh.github.io/2019/11/21/hello-world/" class="article-date">
-  <time datetime="2019-11-21T05:35:40.298Z" itemprop="datePublished">2019-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/npcxh.github.io/2019/11/21/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>2019-11-21，基于hexo+GitHub个人博客诞生啦!</p>
+<p>估计以后会拿来写写题解啥的吧 记录一下刷题生活~</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/21/hello-world/" data-id="ck38pb6ym0001147kac4heg85" class="article-share-link">Share</a>
+      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/21/blog/" data-id="ck38szb3q00004k7k1crs7u9q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +178,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83-C/" rel="tag">贪心,C++</a></li></ul>
     </div>
   </div>
 
@@ -238,7 +188,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a>
+      <a href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83-C/" style="font-size: 10px;">贪心,C++</a>
     </div>
   </div>
 
@@ -265,10 +215,6 @@
         
           <li>
             <a href="/npcxh.github.io/2019/11/21/blog/">第一个新博客！</a>
-          </li>
-        
-          <li>
-            <a href="/npcxh.github.io/2019/11/21/hello-world/">Hello World</a>
           </li>
         
       </ul>
