@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>POJ 2385 Apple Catching | Npcxh&#39;s Coding Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Description It is a little known fact that cows love apples. Farmer John has two apple trees (which are conveniently numbered 1 and 2) in his field, each full of apples. Bessie cannot reach the apples">
+<meta name="keywords" content="C++,DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ 2385 Apple Catching">
+<meta property="og:url" content="https:&#x2F;&#x2F;tpcother.github.io&#x2F;npcxh.github.io&#x2F;2019&#x2F;11&#x2F;27&#x2F;Apple&#x2F;index.html">
+<meta property="og:site_name" content="Npcxh&#39;s Coding Blog">
+<meta property="og:description" content="Description It is a little known fact that cows love apples. Farmer John has two apple trees (which are conveniently numbered 1 and 2) in his field, each full of apples. Bessie cannot reach the apples">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-11-27T07:10:05.166Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/npcxh.github.io/atom.xml" title="Npcxh&#39;s Coding Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/npcxh.github.io/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/npcxh.github.io/" id="logo">Npcxh&#39;s Coding Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/npcxh.github.io/" id="subtitle">Stay hungry,stay foolish.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/npcxh.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/npcxh.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/npcxh.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tpcother.github.io/npcxh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Apple" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/npcxh.github.io/2019/11/27/Apple/" class="article-date">
+  <time datetime="2019-11-27T07:04:21.000Z" itemprop="datePublished">2019-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      POJ 2385 Apple Catching
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Description</strong></p>
+<p>It is a little known fact that cows love apples. Farmer John has two apple trees (which are conveniently numbered 1 and 2) in his field, each full of apples. Bessie cannot reach the apples when they are on the tree, so she must wait for them to fall. However, she must catch them in the air since the apples bruise when they hit the ground (and no one wants to eat bruised apples). Bessie is a quick eater, so an apple she does catch is eaten in just a few seconds. </p>
+<p>Each minute, one of the two apple trees drops an apple. Bessie, having much practice, can catch an apple if she is standing under a tree from which one falls. While Bessie can walk between the two trees quickly (in much less than a minute), she can stand under only one tree at any time. Moreover, cows do not get a lot of exercise, so she is not willing to walk back and forth between the trees endlessly (and thus misses some apples). </p>
+<p>Apples fall (one each minute) for T (1 &lt;= T &lt;= 1,000) minutes. Bessie is willing to walk back and forth at most W (1 &lt;= W &lt;= 30) times. Given which tree will drop an apple each minute, determine the maximum number of apples which Bessie can catch. Bessie starts at tree 1.</p>
+<hr>
+<p><strong>Input</strong></p>
+<ul>
+<li><p>Line 1: Two space separated integers: T and W </p>
+</li>
+<li><p>Lines 2..T+1: 1 or 2: the tree that will drop an apple each minute.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Output</strong></p>
+<ul>
+<li>Line 1: The maximum number of apples Bessie can catch without walking more than W times.</li>
+</ul>
+<hr>
+<p><strong>Sample Input</strong></p>
+<p> 7<br> 2<br> 2<br> 1<br> 1<br> 2<br> 2<br> 1<br> 1 </p>
+<hr>
+<p><strong>Sample Output</strong></p>
+<p> 6  </p>
+<hr>
+<p><strong>Hint</strong></p>
+<p>INPUT DETAILS: </p>
+<p>Seven apples fall - one from tree 2, then two in a row from tree 1, then two in a row from tree 2, then two in a row from tree 1. Bessie is willing to walk from one tree to the other twice. </p>
+<p>OUTPUT DETAILS: </p>
+<p>Bessie can catch six apples by staying under tree 1 until the first two have dropped, then moving to tree 2 for the next two, then returning back to tree 1 for the final two.</p>
+<hr>
+<p><strong>大意:</strong><br>有两颗苹果树，树下的牛想吃苹果，每秒会从其中一颗树上掉下一个苹果，牛只想移动w次，求在t秒内牛能吃到的最大苹果数量。每次移动都可以看作是瞬间完成的。(牛最开始在第一颗树下)<br><strong>思路:</strong><br>dp。设f[x][y]为第x秒时移动y次能达到吃到的最多苹果数量。状态转移方程为f[x][y]=max(f[x-1][y],f[x-1][y-1]+a[i][i%2])。其中a[i][i%2]代表了i秒当前树下是否会掉下苹果。储存苹果时读入x，令a[i][x-1]等于1，代表了第i秒该颗苹果树下会落下苹果。</p>
+<p><strong>代码:</strong><br>i%2那个点子是写题解的时候才想起来的…就没改上去….改了会更简洁一点WWW</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t, w, i, j, x;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t &gt;&gt; w;</span><br><span class="line">    <span class="keyword">int</span> a[t][<span class="number">2</span>], f[t][w + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; t;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        a[i][x - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; t;i++)&#123;</span><br><span class="line">        f[i][<span class="number">0</span>] += a[i][<span class="number">0</span>] + f[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= w;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = a[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; t; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= w; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    f[i][j] = <span class="built_in">max</span>(f[i - <span class="number">1</span>][j] + a[i][<span class="number">0</span>], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    f[i][j] = <span class="built_in">max</span>(f[i - <span class="number">1</span>][j] + a[i][<span class="number">1</span>], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][<span class="number">0</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span>(f[t - <span class="number">1</span>][w], f[t - <span class="number">1</span>][w - <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tpcother.github.io/npcxh.github.io/2019/11/27/Apple/" data-id="ck3gyigoe0002oc7k5m435j6x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/npcxh.github.io/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/npcxh.github.io/tags/DP/" rel="tag">DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/npcxh.github.io/2019/11/23/fench/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">POJ 3253 Fence Repair</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/npcxh.github.io/tags/C/" style="font-size: 20px;">C++</a> <a href="/npcxh.github.io/tags/DP/" style="font-size: 10px;">DP</a> <a href="/npcxh.github.io/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/npcxh.github.io/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 15px;">贪心</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/npcxh.github.io/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/npcxh.github.io/2019/11/27/Apple/">POJ 2385 Apple Catching</a>
+          </li>
+        
+          <li>
+            <a href="/npcxh.github.io/2019/11/23/fench/">POJ 3253 Fence Repair</a>
+          </li>
+        
+          <li>
+            <a href="/npcxh.github.io/2019/11/23/party/">聚餐小记</a>
+          </li>
+        
+          <li>
+            <a href="/npcxh.github.io/2019/11/21/Installation/">POJ P1328 Radar Installation</a>
+          </li>
+        
+          <li>
+            <a href="/npcxh.github.io/2019/11/21/blog/">第一个新博客！</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 npcxh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/npcxh.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/npcxh.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/npcxh.github.io/fancybox/jquery.fancybox.css">
+  <script src="/npcxh.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/npcxh.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
