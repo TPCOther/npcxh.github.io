@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Npcxh&#39;s Coding Blog">
 <meta property="og:description" content="Description It is a little known fact that cows love apples. Farmer John has two apple trees (which are conveniently numbered 1 and 2) in his field, each full of apples. Bessie cannot reach the apples">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-27T07:10:05.166Z">
+<meta property="og:updated_time" content="2019-11-28T11:55:32.861Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://tpcother.github.io/npcxh.github.io/2019/11/27/Apple/">
@@ -208,10 +208,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-27 15:04:21 / 修改时间：15:10:05" itemprop="dateCreated datePublished" datetime="2019-11-27T15:04:21+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 15:04:21" itemprop="dateCreated datePublished" datetime="2019-11-27T15:04:21+08:00">2019-11-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 19:55:32" itemprop="dateModified" datetime="2019-11-28T19:55:32+08:00">2019-11-28</time>
+              </span>
 
           
             <span id="/npcxh.github.io/2019/11/27/Apple/" class="post-meta-item leancloud_visitors" data-flag-title="POJ 2385 Apple Catching" title="阅读次数">
@@ -249,6 +255,7 @@
 <p>It is a little known fact that cows love apples. Farmer John has two apple trees (which are conveniently numbered 1 and 2) in his field, each full of apples. Bessie cannot reach the apples when they are on the tree, so she must wait for them to fall. However, she must catch them in the air since the apples bruise when they hit the ground (and no one wants to eat bruised apples). Bessie is a quick eater, so an apple she does catch is eaten in just a few seconds. </p>
 <p>Each minute, one of the two apple trees drops an apple. Bessie, having much practice, can catch an apple if she is standing under a tree from which one falls. While Bessie can walk between the two trees quickly (in much less than a minute), she can stand under only one tree at any time. Moreover, cows do not get a lot of exercise, so she is not willing to walk back and forth between the trees endlessly (and thus misses some apples). </p>
 <p>Apples fall (one each minute) for T (1 &lt;= T &lt;= 1,000) minutes. Bessie is willing to walk back and forth at most W (1 &lt;= W &lt;= 30) times. Given which tree will drop an apple each minute, determine the maximum number of apples which Bessie can catch. Bessie starts at tree 1.</p>
+<a id="more"></a>
 <hr>
 <p><strong>Input</strong></p>
 <ul>
@@ -287,6 +294,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>npcxh
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tpcother.github.io/npcxh.github.io/2019/11/27/Apple/" title="POJ 2385 Apple Catching">https://tpcother.github.io/npcxh.github.io/2019/11/27/Apple/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -538,6 +562,30 @@
   
 
   
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+  <script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20191121,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `本站已经运行 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
 
 
 <script>
