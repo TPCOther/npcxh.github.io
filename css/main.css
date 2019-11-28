@@ -1167,7 +1167,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4eff9c;
+  background: #4dffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2485,12 +2485,6 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-blogroll-item {
   padding: 0;
-}
-body {
-  background: url("https://source.unsplash.com/random/1600x900");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
 }
 body {
   background: url("https://i.loli.net/2019/11/28/4mWYUb1cs7P2nqe.jpg");
