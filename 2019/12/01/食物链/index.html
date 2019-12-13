@@ -47,7 +47,7 @@
 </script>
 
   <meta name="description" content="先来简单定义一下并查集。 定义 并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。  简而言之，就是用来判断两个元素是否处于同一个集合，就好像根据血缘判断两个人是否是亲戚一样。">
-<meta name="keywords" content="C++,并查集,数据结构">
+<meta name="keywords" content="并查集,C++,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并查集学习笔记--以NOI2001食物链为例">
 <meta property="og:url" content="https:&#x2F;&#x2F;tpcother.github.io&#x2F;npcxh.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;%E9%A3%9F%E7%89%A9%E9%93%BE&#x2F;index.html">
@@ -61,7 +61,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;12&#x2F;11&#x2F;lR8YdynM4mfAhuE.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;12&#x2F;13&#x2F;nCAEQojpPVvLt86.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;12&#x2F;13&#x2F;PezI9qNB2X7TC5x.png">
-<meta property="og:updated_time" content="2019-12-13T06:58:24.991Z">
+<meta property="og:updated_time" content="2019-12-13T10:52:30.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;12&#x2F;10&#x2F;pfZDmGch9AMyrVK.png">
 
@@ -224,7 +224,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-13 14:58:24" itemprop="dateModified" datetime="2019-12-13T14:58:24+08:00">2019-12-13</time>
+                <time title="修改时间：2019-12-13 18:52:30" itemprop="dateModified" datetime="2019-12-13T18:52:30+08:00">2019-12-13</time>
               </span>
 
           
@@ -291,11 +291,186 @@
 <h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 <p>显然，我们无法完全确认动物到底在哪个类中，只能根据他们之间的关系推断结论是否正确，普通的并查集是远远不够的，这时候我们需要用到带权并查集。</p>
 <h3 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>当节点之间的关系可以被量化且合并转移时，我们可以使用结点储存权值信息的并查集来维护节点之间的关系。</p>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>我们用1表示A吃B，2表示A被B吃，0表示A与B是同类。<br>先考虑路径压缩时的转移方式,以从3连接到1时发生的转移<br><img src="https://i.loli.net/2019/12/11/lR8YdynM4mfAhuE.png" width="60%"><br>我们可以列出下表<br>| 2与根结点的关系 | 3与2的关系 | 3与根结点的关系 |<br>|:————–:|:———:|:————–:|<br>| 0 | 0 | 0 |<br>| 0 | 1 | 1 |<br>| 0 | 2 | 2 |<br>| 1 | 0 | 1 |<br>| 1 | 1 | 2 |<br>| 1 | 2 | 0 |<br>| 2 | 0 | 2 |<br>| 2 | 1 | 0 |<br>| 2 | 2 | 1 |<br>可以推出v[31]=(v[32]+v[21])%3</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>我们用1表示A吃B，2表示A被B吃，0表示A与B是同类。<br>先考虑路径压缩时的转移方式,以从3连接到1时发生的转移<br><img src="https://i.loli.net/2019/12/11/lR8YdynM4mfAhuE.png" width="60%"><br>我们可以列出下表</p>
+<table>
+<thead>
+<tr>
+<th align="center">2与根结点的关系</th>
+<th align="center">3与2的关系</th>
+<th align="center">3与根结点的关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>可以推出v[31]=(v[32]+v[21])%3</p>
 <hr>
-<p>再来考虑下合并时发生的关系转移<br><img src="https://i.loli.net/2019/12/13/nCAEQojpPVvLt86.png" width="60%"><br>| 2与根结点的关系 | 4与2的关系 | 4与根结点的关系 | 2的根结点与4的根结点的关系 |<br>|:————–:|:———:|:————–:|:———————–:|<br>| 0 | 0 | 0 | 0 |<br>| 0 | 1 | 1 | 0 |<br>| 0 | 2 | 2 | 0 |<br>| 1 | 0 | 1 | 0 |<br>| 1 | 1 | 2 | 0 |<br>| 1 | 2 | 0 | 0 |<br>| 2 | 1 | 2 | 2 |<br>| 2 | 1 | 0 | 0 |<br>| 2 | 2 | 0 | 1 |<br>(不完全统计)<br>可以推出v[31]=(v[43]-v[21]-v[42])%3<br>为防止负数出现导致结果错误，这里应该加个6（易知不影响结果），即v[31]=(v[43]-v[21]-v[42]+6)%3。</p>
+<p>再来考虑下合并时发生的关系转移<br><img src="https://i.loli.net/2019/12/13/nCAEQojpPVvLt86.png" width="60%"></p>
+<table>
+<thead>
+<tr>
+<th align="center">2与根结点的关系</th>
+<th align="center">4与2的关系</th>
+<th align="center">4与根结点的关系</th>
+<th align="center">2的根结点与4的根结点的关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>(不完全统计)<br>可以推出v[31]=(v[43]-v[21]-v[42])%3<br>为防止负数出现导致结果错误，这里应该加个6（易知不影响结果），即v[31]=(v[43]-v[21]-v[42]+6)%3。</p>
 <hr>
-<p>那么我们要如何推断出同一集合中两个节点的关系呢?<br><img src="https://i.loli.net/2019/12/13/PezI9qNB2X7TC5x.png" width="60%"><br>| 2与根结点的关系 | 3与根结点的关系 | 2与3的关系 |<br>|:————–:|:———:|:————–:|<br>| 0 | 0 | 0 |<br>| 0 | 1 | 1 |<br>| 0 | 2 | 2 |<br>| 1 | 1 | 0 |<br>| 1 | 2 | 1 |<br>| 1 | 0 | 2 |<br>| 2 | 2 | 0 |<br>| 2 | 0 | 1 |<br>| 2 | 1 | 2 |<br>同理可推出v[23]=(v[31]-v[21])%3<br>防止负数，这里只用+3即可，即v[23]=(v[31]-v[21]+3)%3。</p>
+<p>那么我们要如何推断出同一集合中两个节点的关系呢?<br><img src="https://i.loli.net/2019/12/13/PezI9qNB2X7TC5x.png" width="60%"></p>
+<table>
+<thead>
+<tr>
+<th align="center">2与根结点的关系</th>
+<th align="center">3与根结点的关系</th>
+<th align="center">2与3的关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+<p>同理可推出v[23]=(v[31]-v[21])%3<br>防止负数，这里只用+3即可，即v[23]=(v[31]-v[21]+3)%3。</p>
 <hr>
 <p>之后的事情就好办啦!对于每一组询问，若A，B不在同一个集合里，就合并他们；若A，B在一个集合里，就查询他们之间的关系，是否等于询问所给的关系，不对应便计数即可。询问中给的d减去1便是我们带权并查集中的权值。</p>
 <h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><details>
@@ -329,8 +504,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/C/" rel="tag"># C++</a>
               <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag"># 并查集</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
           </div>
 
