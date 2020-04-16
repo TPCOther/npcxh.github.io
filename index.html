@@ -196,7 +196,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/16/divide/" class="post-title-link" itemprop="url">divide</a>
+            <a href="/2020/04/16/divide/" class="post-title-link" itemprop="url">分块学习笔记</a>
         </h1>
 
         <div class="post-meta">
@@ -207,11 +207,11 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-16 10:32:06 / 修改时间：10:34:20" itemprop="dateCreated datePublished" datetime="2020-04-16T10:32:06+08:00">2020-04-16</time>
+              <time title="创建时间：2020-04-16 10:32:06 / 修改时间：10:35:58" itemprop="dateCreated datePublished" datetime="2020-04-16T10:32:06+08:00">2020-04-16</time>
             </span>
 
           
-            <span id="/2020/04/16/divide/" class="post-meta-item leancloud_visitors" data-flag-title="divide" title="阅读次数">
+            <span id="/2020/04/16/divide/" class="post-meta-item leancloud_visitors" data-flag-title="分块学习笔记" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -252,131 +252,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tpcother.github.io/npcxh.github.io/2020/04/16/Rebuild/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="npcxh">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Npcxh's Coding Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/16/Rebuild/" class="post-title-link" itemprop="url">分块学习笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-04-16 10:22:51 / 修改时间：10:23:40" itemprop="dateCreated datePublished" datetime="2020-04-16T10:22:51+08:00">2020-04-16</time>
-            </span>
-
-          
-            <span id="/2020/04/16/Rebuild/" class="post-meta-item leancloud_visitors" data-flag-title="分块学习笔记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/16/Rebuild/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/Rebuild/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>好久没更新啦~（假期疯狂划水） </p>
-<p>今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。</p>
-<p>直接看题，实践第一：</p>
-<h2 id="P4198-楼房重建"><a href="#P4198-楼房重建" class="headerlink" title="P4198 楼房重建"></a><a href="https://www.luogu.com.cn/problem/P4198" target="_blank" rel="noopener">P4198 楼房重建</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小 A 的楼房外有一大片施工工地，工地上有 $N$ 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。</p>
-<p>为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 $(0,0)$ 点的位置，第$i$栋楼房可以用一条连接 $(i,0)$ 和 $(i,H_i)$的线段表示，其中$H_i$为第$i$栋楼房的高度。如果这栋楼房上任何一个高度大于 $0$ 的点与$(0,0)$的连线没有与之前的线段相交，那么这栋楼房就被认为是可见的。</p>
-<p>施工队的建造总共进行了$M$天。初始时，所有楼房都还没有开始建造，它们的高度均为$0$。在第$i$天，建筑队将会将横坐标为$X_i$的房屋的高度变为 $Y_i$ （高度可以比原来大—修建，也可以比原来小—拆除，甚至可以保持不变—建筑队这天什么事也没做）。请你帮小 A 数数每天在建筑队完工之后，他能看到多少栋楼房？</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个正整数 $N,M$。</p>
-<p>接下来$M$行，每行两个正整数$ X_i,Y_i$ 。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>$M$ 行，第$i$行一个整数表示第$i$天过后小 A 能看到的楼房有多少栋。</p>
-<p>样例输入</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">4</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">1</span> <span class="number">1000000000</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>样例输出</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>第一想法是用线段树，但是蒟蒻不会写线段树，怎么办呢~让我们试试分（暴）块（力）。</p>
-<p>一般来说是分成$\sqrt{n}$块。然后单独维护每块里斜率的单调上升队列，用vector储存，相当于扫描一遍该区块，每次修改时只需要维护单块内的队列，可以直接暴力重构。<br>对于查询，遍历所有块，以一个变量m储存上一个块斜率的最大值，然后在下一个块中用二分搜索寻找第一个大于m的值的位置，用该块总长减去m所在的位置即可得到该块中可视房屋数量，累加到ans上，并更新m值（队尾）。</p>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><details>
-<summary>Code(开启O2优化)</summary>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; k[<span class="number">1010</span>];  <span class="comment">//这里直接分的100/块</span></span><br><span class="line"><span class="keyword">double</span> b[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos = x / <span class="number">100</span>, i = pos*<span class="number">100</span>; <span class="comment">//块位置计算</span></span><br><span class="line">    b[x] = (<span class="keyword">double</span>)y / (<span class="keyword">double</span>)x;   <span class="comment">//修改斜率</span></span><br><span class="line">    k[pos].<span class="built_in">clear</span>();                 <span class="comment">//暴力重构</span></span><br><span class="line">    <span class="keyword">while</span>(!b[i])&#123;i++;&#125;              <span class="comment">//跳过高度为0的房屋</span></span><br><span class="line">    k[pos].push_back(b[i]);</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; pos*<span class="number">100</span> + <span class="number">100</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(!b[i]&amp;&amp;i&lt;pos*<span class="number">100</span> + <span class="number">99</span>)&#123;i++;&#125; <span class="comment">//for内用while一定记得卡好边界....血的教训(</span></span><br><span class="line">        <span class="keyword">if</span>(b[i]&amp;&amp;b[i]&gt;k[pos].back())&#123;   <span class="comment">//大于队尾说明满足单调递增</span></span><br><span class="line">            k[pos].push_back(b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> m = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n / <span class="number">100</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k[i].empty())&#123;<span class="keyword">continue</span>;&#125; <span class="comment">//跳过空块</span></span><br><span class="line">        <span class="keyword">if</span>(k[i].back()&lt;=m)&#123;<span class="keyword">continue</span>;&#125; <span class="comment">//若队尾小于m，则整个块内没有可视建筑，跳过</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            ans += k[i].<span class="built_in">end</span>() - upper_bound(k[i].<span class="built_in">begin</span>(), k[i].<span class="built_in">end</span>(), m);  <span class="comment">//计算可视建筑</span></span><br><span class="line">            m = <span class="built_in">max</span>(k[i].back(), m);  <span class="comment">//更新最大值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x,y;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">        modify(x, y);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</details>
-
-<hr>
-<p>再来看看另一道题</p>
-<h2 id="P3203-HNOI2010-弹飞绵羊"><a href="#P3203-HNOI2010-弹飞绵羊" class="headerlink" title="P3203 [HNOI2010]弹飞绵羊"></a><a href="https://www.luogu.com.cn/problem/P3203" target="_blank" rel="noopener">P3203 [HNOI2010]弹飞绵羊</a></h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>某天，Lostmonkey 发明了一种超级弹力装置，为了在他的绵羊朋友面前显摆，他邀请小绵羊一起玩个游戏。</p>
-<p>游戏一开始，Lostmonkey 在地上沿着一条直线摆上$n$个装置，每个装置设定初始弹力系数$k_i$，当绵羊达到第$i$个装置时，它会往后弹$k_i$步，达到第$i+k_i$个装置，若不存在第$i+k_i$个装置，则绵羊被弹飞。</p>
-<p>绵羊想知道当它从第$i$个装置起步时，被弹几次后会被弹飞。为了使得游戏更有趣，Lostmonkey 可以修改某个弹力装置的弹力系数，任何时候弹力系数均为正整数。</p>
-<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含一个整数 $n$，表示地上有$n$个装置，装置的编号从$0 \sim n-1$</p>
-<p>接下来一行有$n$个正整数，依次为那$n$个装置的初始弹力系数。</p>
-<p>第三行有一个正整数$m$，表示操作次数。接下来$m$行每行至少有两个数$i,j$。</p>
-<p>若$i=1$，你要输出从$j$出发被弹几次后被弹飞</p>
-<p>若$i=2$，则还会再输入一个正整数$k$，表示第$j$个弹力装置的系数被修改成$k$。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>对于每个 $i=1$ 的操作，输出一行一个整数表示答案。</p>
-<p>样例输入</p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">2</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">1</span></span><br><span class="line"><span class="symbol">2 </span><span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>样例输出</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>这道题正解应该用动态树…不过让我们用前面分块的思想来分析一下，该维护什么呢?它不像上一道题有明确的维护对象，让我们觉得难以分块。<br>让我们想想题目中的弹射操作，有点像并查集需要一层层递归得到最后的弹射位置，而这个过程恰好是极耗费时间的。我们可以从减少递归层数入手——分块，然后记录每个装置弹出该块需要的次数，以及弹出后的落点，这样就可以减少块内的模拟弹射次数。修改时，考虑到修改节点前面有节点可能利用了被修改节点进行弹射，所以需要对块内、它及它前面的节点进行更新。<br>对于询问，通过节点定位落地点递归并累加中途弹射次数即可。</p>
-<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><details>
-<summary>Code</summary>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T[<span class="number">200010</span>], n, m, g;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Device</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>, down=<span class="number">200010</span>, pos;</span><br><span class="line">&#125;;</span><br><span class="line">Device a[<span class="number">200010</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> j,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    T[j] = k;</span><br><span class="line">    <span class="keyword">int</span> l = a[j].pos * g, i = j;    <span class="comment">//块位置计算</span></span><br><span class="line">    <span class="keyword">for</span> (; i &gt;= l; i--)&#123;            <span class="comment">//倒着修改——前面的节点的数据可以通过后面节点数据推出，减少模拟弹射的次数。</span></span><br><span class="line">        <span class="keyword">int</span> z = i + T[i];</span><br><span class="line">        a[i].out = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(z&gt;=l+g)&#123;                 <span class="comment">//讨论：此次弹射是否出块</span></span><br><span class="line">            a[i].out = <span class="number">1</span>;</span><br><span class="line">            a[i].down = z;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            a[i].out = <span class="number">1</span> + a[z].out;</span><br><span class="line">            a[i].down = a[z].down;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;n)&#123;             <span class="comment">//遍历块得到结果</span></span><br><span class="line">        ans += a[j].out;</span><br><span class="line">        j = a[j].down;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    g = <span class="built_in">sqrt</span>(n) + <span class="number">0.5</span>;      <span class="comment">//这里分成sqrt(n)块</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;    <span class="comment">//初始化每个节点对应的块</span></span><br><span class="line">        a[i].pos = i / g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;   <span class="comment">//初始化</span></span><br><span class="line">        <span class="keyword">int</span> j = i + T[i];</span><br><span class="line">        <span class="keyword">if</span>(j&gt;=(a[i].pos+<span class="number">1</span>)*g)&#123;</span><br><span class="line">            a[i].out = <span class="number">1</span>;</span><br><span class="line">            a[i].down = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            a[i].out = <span class="number">1</span> + a[j].out;</span><br><span class="line">            a[i].down = a[j].down;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y, z;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;y);</span><br><span class="line">            query(y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;y, &amp;z);</span><br><span class="line">            modify(y, z);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</details>
-
-<p>速度还行，感觉超过蛮多LCT题解的(</p>
-
       
     </div>
 
@@ -1077,7 +952,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
