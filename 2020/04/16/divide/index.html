@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="好久没更新啦~（假期疯狂划水）  今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。 直接看题，实践第一： P4198 楼房重建题目描述小 A 的楼房外有一大片施工工地，工地上有 $N$ 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。 为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 $(0">
+  <meta name="description" content="好久没更新啦~（假期疯狂划水）  今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。">
 <meta name="keywords" content="C++,分块">
 <meta property="og:type" content="article">
 <meta property="og:title" content="divide">
 <meta property="og:url" content="https:&#x2F;&#x2F;tpcother.github.io&#x2F;npcxh.github.io&#x2F;2020&#x2F;04&#x2F;16&#x2F;divide&#x2F;index.html">
 <meta property="og:site_name" content="Npcxh&#39;s Coding Blog">
-<meta property="og:description" content="好久没更新啦~（假期疯狂划水）  今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。 直接看题，实践第一： P4198 楼房重建题目描述小 A 的楼房外有一大片施工工地，工地上有 $N$ 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。 为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 $(0">
+<meta property="og:description" content="好久没更新啦~（假期疯狂划水）  今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-16T02:32:50.918Z">
+<meta property="og:updated_time" content="2020-04-16T02:34:20.617Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://tpcother.github.io/npcxh.github.io/2020/04/16/divide/">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-16 10:32:06 / 修改时间：10:32:50" itemprop="dateCreated datePublished" datetime="2020-04-16T10:32:06+08:00">2020-04-16</time>
+              <time title="创建时间：2020-04-16 10:32:06 / 修改时间：10:34:20" itemprop="dateCreated datePublished" datetime="2020-04-16T10:32:06+08:00">2020-04-16</time>
             </span>
 
           
@@ -247,6 +247,7 @@
       
         <p>好久没更新啦~（假期疯狂划水） </p>
 <p>今天来学习下分块~顾名思义，就是将要维护的数据分成若干小块来处理的一种思想。</p>
+<a id="more"></a>
 <p>直接看题，实践第一：</p>
 <h2 id="P4198-楼房重建"><a href="#P4198-楼房重建" class="headerlink" title="P4198 楼房重建"></a><a href="https://www.luogu.com.cn/problem/P4198" target="_blank" rel="noopener">P4198 楼房重建</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小 A 的楼房外有一大片施工工地，工地上有 $N$ 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。</p>
 <p>为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 $(0,0)$ 点的位置，第$i$栋楼房可以用一条连接 $(i,0)$ 和 $(i,H_i)$的线段表示，其中$H_i$为第$i$栋楼房的高度。如果这栋楼房上任何一个高度大于 $0$ 的点与$(0,0)$的连线没有与之前的线段相交，那么这栋楼房就被认为是可见的。</p>
