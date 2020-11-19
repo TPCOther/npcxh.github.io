@@ -57,7 +57,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;11&#x2F;17&#x2F;cW79shtfwPri1gk.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;11&#x2F;19&#x2F;DvJCsVN3nbGqm7Y.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;11&#x2F;19&#x2F;3lDm2c8H9EVJGSo.png">
-<meta property="og:updated_time" content="2020-11-19T09:56:33.958Z">
+<meta property="og:updated_time" content="2020-11-19T09:59:07.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;11&#x2F;17&#x2F;cW79shtfwPri1gk.png">
 
@@ -220,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-19 17:56:33" itemprop="dateModified" datetime="2020-11-19T17:56:33+08:00">2020-11-19</time>
+                <time title="修改时间：2020-11-19 17:59:07" itemprop="dateModified" datetime="2020-11-19T17:59:07+08:00">2020-11-19</time>
               </span>
 
           
@@ -263,6 +263,7 @@
 </ul>
 <a id="more"></a>
 <details>
+
 **输入格式**
 
 第一行包含两个整数$n,m$分别表示该数列数字的个数和操作的总个数。
@@ -283,6 +284,7 @@
 
 **输出 #1**
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14</span></span><br><span class="line"><span class="number">16</span></span><br></pre></td></tr></table></figure>
+
 </details>
 
 <p>数据很大，用遍历的话查询$O(n)$的复杂度下肯定是会超时的。考虑前缀和，修改的复杂度又变成了$O(n)$，无法解决问题。<br>那什么可以减小时间复杂度呢？那就是树形逻辑结构，树上的操作大多都是$O(logn)$级别的，而今天的主角之一——<strong>树状数组</strong>就出场啦。</p>
@@ -328,6 +330,7 @@
 </li>
 </ul>
 <details>
+
 **输入格式**
 
 第一行包含两个整数$n,m$分别表示该数列数字的个数和操作的总个数。
@@ -348,6 +351,7 @@
 
 **输出 #1**
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
 </details>
 
 <p>麻烦来了，又是区间修改又是区间查询，树状数组也难以同时完成这两个要求，这时候就要请我们今天的第二个主角——<strong>线段树</strong>出场了。<br>与树状数组不同的是，线段树是一种真实的树形结构，是一颗二叉树。</p>
